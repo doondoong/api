@@ -21,7 +21,7 @@ const logKind = envVars.LOG_KIND?.split("|");
 const transport =
   logKind?.map((kind) => {
     return new winstonDaily({
-      filename: `${logDir}/logiall-admin-%DATE%.${kind}.log`,
+      filename: `${logDir}/myProject-%DATE%.${kind}.log`,
       level: kind,
       datePattern: "YYYY-MM-DD-HH",
       zippedArchive: false,

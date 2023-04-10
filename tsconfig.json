@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "rootDir": "./src",
+    "rootDir": "./",
     "target": "ES2018",
     "module": "commonjs",
     "outDir": "dist",
     "esModuleInterop": true,
     "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "paths": {
       "~/src/*": ["./src/*"],
       "~/entity/*": ["./src/graphql/entity/*"],
