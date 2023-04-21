@@ -17,8 +17,9 @@ const envVars = {
   LOG_KIND: process.env.LOG_KIND || "",
   ORIGIN_URL: process.env.ORIGIN_URL || "",
   PUBLIC_PATH: process.env.PUBLIC_PATH || "",
-  TERMS_FILE_NAME: process.env.TERMS_FILE_NAME || "termsList.json",
   HOST: process.env.HOST || "",
+  ACCESS_SECRET: process.env.ACCESS_SECRET || "",
+  REFRESH_SECRET: process.env.REFRESH_SECRET || "",
 };
 
 export { envVars };

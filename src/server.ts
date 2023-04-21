@@ -1,12 +1,12 @@
 import express from "express";
 import { ApolloServer, gql } from "apollo-server-express";
-import cors from "cors";
 import { envVars } from "./utils/envVars";
 import _ from "lodash";
 import apiRouter from "./api";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 import "reflect-metadata";
-import { User } from "./entity/users/USER_ENTITY";
 
 // import { DataSource } from "typeorm";
 
@@ -25,20 +25,29 @@ const whitelist = originUrls?.split(",");
 //   entities: [User],
 //   synchronize: true,
 // });
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: (reqOrigin, callback) => {
+//       if (!reqOrigin || _.includes(whitelist, reqOrigin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"), false);
+//       }
+//     },
+//   })
+// );
 app.use(
   cors({
+    origin: "*",
+    methods: ["GET, POST"],
     credentials: true,
-    origin: (reqOrigin, callback) => {
-      if (!reqOrigin || _.includes(whitelist, reqOrigin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"), false);
-      }
-    },
   })
 );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
 app.use("/api", apiRouter);
 
 const typeDefs = gql`
