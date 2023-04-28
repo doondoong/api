@@ -40,7 +40,7 @@ const whitelist = originUrls?.split(",");
 app.use(
   cors({
     origin: "*",
-    methods: ["GET, POST"],
+    methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
   })
 );

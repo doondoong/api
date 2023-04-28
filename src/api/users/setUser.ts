@@ -1,6 +1,7 @@
 import express from "express";
 import { User } from "../../entity/users/USER_ENTITY";
 import dbConnection from "../../utils/dbConnection";
+import bcrypt from "bcrypt";
 
 const setUser = express.Router();
 setUser.get("/", (req, res) => {
@@ -11,9 +12,10 @@ setUser.post("/", async (req, res) => {
   console.log(email, name, password, "body");
   try {
     const user = new User();
+
     user.name = name;
     user.email = email;
-    user.password = password;
+    user.password = await bcrypt.hash(password, 10);
     console.log(user, "user");
 
     if (!user.email || !user.name || !user.password) {

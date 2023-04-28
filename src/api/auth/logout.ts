@@ -6,7 +6,7 @@ import { envVars } from "../../utils/envVars";
 
 const logout = express.Router();
 
-logout.post("/", async (req, res) => {
+logout.get("/", async (req, res) => {
   try {
     // access Token 삭제
     res.cookie("accessToken", "");
