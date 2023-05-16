@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
 import { envVars } from "./envVars";
 import { User } from "../entity/users/USER_ENTITY";
+import { Account } from "../entity/account/ACCOUNT_BOOK_ENTITY";
 
 export const dbConnection = new DataSource({
   type: "postgres",
@@ -9,7 +10,7 @@ export const dbConnection = new DataSource({
   username: envVars.DB_USERNAME,
   password: envVars.DB_PASSWORD,
   database: envVars.DB_DATABASE,
-  entities: [User],
+  entities: [User, Account],
   synchronize: true,
 });
 dbConnection
