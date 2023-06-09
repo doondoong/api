@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
 
 enum gender {
-  mail = "남",
+  male = "남",
   female = "여",
 }
 @Entity()
